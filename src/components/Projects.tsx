@@ -195,11 +195,11 @@ export default function Projects() {
               onPointerMove={(e) => handleRowMouseMove(index, e)}
             >
               <div className="relative py-7 md:py-9 border-t border-ink/10 transition-all duration-300 ease-out">
-                {/* Background highlight on hover - warm themed ink tint */}
+                {/* Background highlight on hover */}
                 <div
-                  className={`pointer-events-none absolute inset-0 -mx-4 px-4 bg-ink/[0.04] border border-ink/8 rounded-2xl transition-all duration-300 ease-out ${
+                  className={`pointer-events-none absolute inset-0 -mx-4 px-4 bg-neutral-100/70 border border-neutral-200/80 rounded-2xl transition-all duration-300 ease-out ${
                     hoveredIndex === index
-                      ? 'opacity-100 scale-100 shadow-[0_8px_24px_-8px_rgba(5,5,5,0.04)]'
+                      ? 'opacity-100 scale-100 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.04)]'
                       : 'opacity-0 scale-98'
                   }`}
                 />
@@ -241,7 +241,7 @@ export default function Projects() {
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-lg bg-ink/[0.04] border border-ink/8 px-2.5 sm:px-3 py-1 font-outfit text-xs sm:text-[13px] font-medium text-ink/70 transition-colors group-hover:bg-ink/[0.08] group-hover:text-ink"
+                          className="rounded-lg bg-neutral-100 border border-neutral-200/80 px-2.5 sm:px-3 py-1 font-outfit text-xs sm:text-[13px] font-medium text-ink/75 transition-colors group-hover:bg-neutral-200/80 group-hover:text-ink"
                         >
                           {tech}
                         </span>
@@ -254,7 +254,7 @@ export default function Projects() {
                     <span className="font-display text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-ink/65 transition-colors duration-300 group-hover:text-ink">
                       View More
                     </span>
-                    <div className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-ink/20 bg-bg shadow-sm transition-all duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-bg group-hover:scale-105">
+                    <div className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-ink/20 bg-white shadow-sm transition-all duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white group-hover:scale-105">
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>

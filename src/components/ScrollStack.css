@@ -38,7 +38,7 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   position: relative;
-  background-color: var(--bg, #f5f1e8);
+  background-color: var(--bg, #ffffff);
 }
 @media (max-width: 768px) {
   .scroll-stack-card {

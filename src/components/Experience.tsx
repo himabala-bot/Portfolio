@@ -57,7 +57,7 @@ function ExperienceBlock({
     <motion.div
       ref={ref}
       style={{ y, opacity }}
-      className="relative rounded-2xl md:rounded-3xl border border-ink/10 bg-bg p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_6px_28px_rgba(5,5,5,0.04)] transition-all duration-500 hover:shadow-[0_18px_45px_rgba(5,5,5,0.07)]"
+      className="relative rounded-2xl md:rounded-3xl border border-neutral-200/90 bg-white p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] hover:border-neutral-300"
     >
       
       <div className="mb-7 flex flex-col justify-between gap-5 border-b border-ink/10 pb-6 sm:mb-9 sm:pb-7 sm:flex-row sm:items-start">
@@ -125,7 +125,7 @@ function ExperienceBlock({
                 href={exp.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-wider text-bg shadow-md transition-all duration-300 hover:bg-[#54D68A] hover:text-[#0a3314] hover:shadow-lg md:text-base"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-[#54D68A] hover:text-[#0a3314] hover:shadow-lg md:text-base"
               >
                 <span>View Live Site</span>
                 <span className="text-base transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
@@ -146,7 +146,7 @@ function ExperienceBlock({
                 {exp.scope?.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-ink/15 bg-ink/[0.04] px-3.5 py-1.5 font-outfit text-xs sm:text-sm font-semibold text-ink transition-colors hover:border-ink/30"
+                    className="rounded-full border border-neutral-200 bg-neutral-100/80 px-3.5 py-1.5 font-outfit text-xs sm:text-sm font-semibold text-ink/80 transition-colors hover:border-neutral-300 hover:bg-neutral-200/80"
                   >
                     {t}
                   </span>

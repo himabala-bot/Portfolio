@@ -87,7 +87,7 @@ export default function CustomCursor() {
 
   const bgColor = isDark
     ? state === 'peek'
-      ? '#f5f1e8'
+      ? '#ffffff'
       : state === 'hover'
       ? 'rgba(255, 255, 255, 0.15)'
       : 'rgba(255, 255, 255, 0.95)'
@@ -109,7 +109,7 @@ export default function CustomCursor() {
     ? 'rgba(5, 5, 5, 0.55)'
     : 'rgba(5, 5, 5, 0.85)';
 
-  const textColor = isDark ? '#050505' : '#f5f1e8';
+  const textColor = isDark ? '#050505' : '#ffffff';
 
   return (
     <motion.div

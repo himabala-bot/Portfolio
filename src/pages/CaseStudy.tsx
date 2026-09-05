@@ -41,7 +41,7 @@ export default function CaseStudy() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="min-h-screen bg-bg"
+      className="min-h-screen bg-white"
     >
       
       <header className="relative px-4 pt-24 pb-6 sm:px-8 sm:pt-30 sm:pb-8 md:pt-36 md:pb-12">
@@ -50,7 +50,7 @@ export default function CaseStudy() {
           <div className="mb-6">
             <button
               onClick={() => navigate('/#projects')}
-              className="group inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/[0.04] px-3.5 sm:px-4 py-1.5 sm:py-2 font-display text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] sm:tracking-[0.18em] text-ink/75 transition-all duration-300 hover:border-ink/40 hover:bg-ink hover:text-bg shadow-sm"
+              className="group inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-neutral-100/80 px-3.5 sm:px-4 py-1.5 sm:py-2 font-display text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] sm:tracking-[0.18em] text-ink/75 transition-all duration-300 hover:border-ink hover:bg-ink hover:text-white shadow-sm"
             >
               <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
               Back to Work
@@ -84,7 +84,7 @@ export default function CaseStudy() {
                     window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
                   }
                 }}
-                className="relative z-30 group mb-1 sm:mb-2 inline-flex items-center gap-1.5 rounded-full border border-ink/20 bg-bg/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm transition-all duration-300 hover:border-ink hover:bg-ink hover:text-bg hover:shadow-md cursor-pointer select-none"
+                className="relative z-30 group mb-1 sm:mb-2 inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-3 sm:px-3.5 py-1.5 font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm transition-all duration-300 hover:border-ink hover:bg-ink hover:text-white hover:shadow-md cursor-pointer select-none"
               >
                 <span>Open Website</span>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -111,7 +111,7 @@ export default function CaseStudy() {
             {project.techStack.map((t) => (
               <span
                 key={t}
-                className="rounded-lg bg-ink/[0.04] border border-ink/10 px-2.5 sm:px-3 py-1 font-outfit text-xs sm:text-[13px] font-medium text-ink/70"
+                className="rounded-lg bg-neutral-100 border border-neutral-200/80 px-2.5 sm:px-3 py-1 font-outfit text-xs sm:text-[13px] font-medium text-ink/75"
               >
                 {t}
               </span>

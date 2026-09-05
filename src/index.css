@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --bg: #f5f1e8;
+    --bg: #ffffff;
     --ink: #050505;
     --ink-2: #1f1f1f;
     --accent-blue: #2997e8;
