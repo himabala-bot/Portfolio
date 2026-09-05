@@ -32,8 +32,37 @@ const MouseFollowingEyes: React.FC<MouseFollowingEyesProps> = ({
       setMousePos({ x: e.clientX, y: e.clientY });
     };
 
+    const handleTouch = (e: TouchEvent) => {
+      if (e.touches && e.touches[0]) {
+        setMousePos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+      }
+    };
+
+    const handleOrientation = (e: DeviceOrientationEvent) => {
+      if (e.gamma !== null && e.beta !== null) {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const tiltX = Math.max(-45, Math.min(45, e.gamma || 0));
+        const tiltY = Math.max(-45, Math.min(45, (e.beta || 45) - 45));
+
+        const targetX = centerX + (tiltX / 45) * (window.innerWidth * 0.9);
+        const targetY = centerY + (tiltY / 45) * (window.innerHeight * 0.9);
+
+        setMousePos({ x: targetX, y: targetY });
+      }
+    };
+
     window.addEventListener("mousemove", handleGlobalMouseMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleGlobalMouseMove);
+    window.addEventListener("touchmove", handleTouch, { passive: true });
+    window.addEventListener("touchstart", handleTouch, { passive: true });
+    window.addEventListener("deviceorientation", handleOrientation, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", handleGlobalMouseMove);
+      window.removeEventListener("touchmove", handleTouch);
+      window.removeEventListener("touchstart", handleTouch);
+      window.removeEventListener("deviceorientation", handleOrientation);
+    };
   }, []);
 
   
@@ -174,7 +203,7 @@ const Eye: React.FC<EyeProps> = ({
   return (
     <div
       ref={selfRef}
-      className={`relative bg-white rounded-[50%/50%] flex items-center justify-center shadow-[0_10px_25px_-5px_rgba(5,5,5,0.12)] overflow-hidden transition-all duration-300 ${
+      className={`relative bg-[#f8f8f8] border-2 border-ink rounded-[50%/50%] flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.12)] overflow-hidden transition-all duration-300 ${
         eyeClassName || 'w-14 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28'
       }`}
     >

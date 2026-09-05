@@ -45,11 +45,11 @@ export default function Hero() {
     <motion.section
       ref={ref}
       style={{ y, scale, opacity }}
-      className="grain relative flex min-h-[90svh] md:min-h-screen w-full flex-col justify-center md:justify-between overflow-hidden bg-bg px-4 pt-24 pb-10 sm:px-8 sm:pt-28 sm:pb-12 md:px-12 md:pt-30 md:pb-12 lg:px-16 lg:pt-34 lg:pb-14 xl:px-20"
+      className="grain relative flex min-h-0 md:min-h-screen w-full flex-col justify-start md:justify-between overflow-hidden bg-bg px-4 pt-20 pb-8 sm:px-8 sm:pt-24 sm:pb-12 md:px-12 md:pt-30 md:pb-12 lg:px-16 lg:pt-34 lg:pb-14 xl:px-20"
     >
-      <div className="mx-auto flex h-full w-full max-w-7xl flex-1 flex-col justify-center md:justify-between gap-10 sm:gap-14 md:gap-0">
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-start md:justify-between gap-6 sm:gap-10 md:gap-0">
         
-        <div className="my-0 md:my-auto flex flex-col items-start w-full py-2 sm:py-4 md:py-8 text-left">
+        <div className="my-0 md:my-auto flex flex-col items-start w-full pt-1 pb-1 sm:py-4 md:py-8 text-left">
           
           <div className="flex w-full flex-nowrap items-baseline justify-between select-none overflow-visible leading-[0.76]">
             {letters.map((l, i) => (
@@ -76,7 +76,7 @@ export default function Hero() {
         </div>
 
         
-        <div className="flex flex-col md:grid md:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-start md:items-center pt-2 sm:pt-6 md:pt-10 w-full">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-4 sm:gap-8 lg:gap-12 items-start md:items-center pt-1 sm:pt-6 md:pt-10 w-full">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -106,8 +106,8 @@ export default function Hero() {
             <MouseFollowingEyes
               blinkInterval={6000}
               eyelidClassName="bg-accent-pink"
-              eyeClassName="w-12 h-18 sm:w-14 sm:h-20 md:w-[3.8rem] md:h-[5.8rem] lg:w-[4.4rem] lg:h-[6.6rem] xl:w-[4.9rem] xl:h-[7.4rem] shadow-[0_12px_28px_-6px_rgba(5,5,5,0.12)] border border-ink/5"
-              pupilClassName="h-4.5 w-4.5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7"
+              eyeClassName="w-13 h-19 sm:w-14 sm:h-20 md:w-[3.8rem] md:h-[5.8rem] lg:w-[4.4rem] lg:h-[6.6rem] xl:w-[4.9rem] xl:h-[7.4rem]"
+              pupilClassName="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7"
             />
           </motion.div>
         </div>

@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative flex min-h-[90svh] md:min-h-screen flex-col justify-center px-4 py-24 sm:px-6 md:px-10 md:py-32 lg:px-14 xl:px-20"
+      className="relative flex min-h-0 md:min-h-screen flex-col justify-center px-4 py-12 sm:px-6 md:px-10 md:py-32 lg:px-14 xl:px-20"
     >
       <div className="mx-auto w-full max-w-6xl">
         <motion.div
