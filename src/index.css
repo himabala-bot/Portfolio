@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
   :root {
     --bg: #f5f1e8;
@@ -18,16 +17,13 @@
     --accent-green: #54d68a;
     --accent-teal: #35c6c1;
   }
-
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
   html {
     scroll-behavior: smooth;
   }
-
   body {
     background-color: var(--bg);
     color: var(--ink);
@@ -35,12 +31,10 @@
     overflow-x: hidden;
     cursor: auto;
   }
-
   ::selection {
     background: var(--ink);
     color: var(--bg);
   }
-
   @media (min-width: 1024px) {
     body.has-custom-cursor {
       cursor: none;
@@ -51,7 +45,6 @@
     }
   }
 }
-
 @layer utilities {
   .font-display {
     font-family: 'Outfit', system-ui, sans-serif;
@@ -64,20 +57,16 @@
   .font-hand {
     font-family: 'Caveat', cursive;
   }
-
   .text-balance {
     text-wrap: balance;
   }
-
   .text-pretty {
     text-wrap: pretty;
   }
-
   .mask-fade-b {
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
-
   .grain {
     position: relative;
   }
@@ -91,8 +80,6 @@
     mix-blend-mode: multiply;
   }
 }
-
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -106,7 +93,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(5, 5, 5, 0.35);
 }
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

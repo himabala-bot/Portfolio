@@ -8,16 +8,30 @@ import CaseStudy from '@/pages/CaseStudy';
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
+
   useEffect(() => {
     if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
-        return;
-      }
+      const timer = setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      
+      const html = document.documentElement;
+      const prevBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      requestAnimationFrame(() => {
+        html.style.scrollBehavior = prevBehavior;
+      });
     }
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname, hash]);
+
   return null;
 }
 

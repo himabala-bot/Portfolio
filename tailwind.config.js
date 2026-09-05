@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -23,6 +23,7 @@ export default {
         },
       },
       fontFamily: {
+        outfit: ['Outfit', 'system-ui', 'sans-serif'],
         sans: ['Outfit', 'system-ui', 'sans-serif'],
         display: ['Outfit', 'system-ui', 'sans-serif'],
         serif: ['Instrument Serif', 'Georgia', 'serif'],

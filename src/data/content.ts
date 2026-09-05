@@ -10,6 +10,7 @@ export type Project = {
   techStack: string[];
   liveUrl: string;
   accent: string;
+  image: string;
 };
 
 export const projects: Project[] = [
@@ -17,104 +18,128 @@ export const projects: Project[] = [
     slug: 'vesto',
     number: '01',
     name: 'VESTO',
-    tagline: 'Personal Finance Management Platform',
+    tagline: 'Personal Finance & Cash Flow Intelligence',
     description:
-      'A full-stack personal finance platform bringing expense tracking, budgeting, savings goals, recurring expenses, and financial insights into one interface.',
+      'VESTO is a proactive personal finance platform designed to answer one simple question: “How much can I safely spend today?” Instead of only showing users where their money went, VESTO continuously calculates a Safe-to-Spend allowance based on income, recurring commitments, savings goals, current spending, and the remaining days in the month.',
     problem:
-      'Managing personal finances across expenses, budgets, savings goals, and recurring payments can become fragmented and difficult to track. Users often lack a clear understanding of their spending patterns and how much they can safely spend.',
+      'Traditional budgeting tools tend to focus on historical spending, showing users where their money has already gone through detailed category-based dashboards. While this helps users review past expenses, it does not always answer the more immediate question: how much can I safely spend right now?\n\nUsers may have upcoming bills or savings targets that are not reflected clearly in their available spending amount. As a result, they are left to mentally account for future commitments while trying to decide whether a purchase is affordable today. What is missing is clear, forward-looking guidance that connects current spending with upcoming bills and savings goals.',
     solution:
-      'Vesto is a full-stack personal finance platform that brings expense tracking, budgeting, savings goals, recurring expenses, and financial insights into one interface. Users can record transactions, organize spending by category, set monthly budgets, track savings goals, and monitor their overall financial health through an interactive dashboard. The platform provides contextual financial insights such as spending breakdowns, budget progress, recurring expenses, and a Safe-to-Spend view that helps users understand their available discretionary money.',
+      "VESTO addresses this through a real-time Safe-to-Spend engine that first accounts for committed bills and savings targets before calculating the user's remaining discretionary allowance. Instead of treating available money as fully spendable, VESTO separates money that already has a purpose from what is actually available for everyday spending.\n\nThe Safe-to-Spend calculation works alongside recurring bill tracking, category budgets, savings goals, and spending-velocity analytics to give users a clearer view of their current financial position. Proactive financial warnings add another layer of guidance when spending patterns or upcoming commitments require attention.\n\nTogether, these features turn budgeting from a review of past spending into clear, actionable guidance for everyday financial decisions.",
     build:
-      'Built with a Next.js + TypeScript frontend paired with a Django REST Framework backend over PostgreSQL. JWT authentication secures every request. Recharts powers the interactive dashboard visualizations. Deployed across Vercel for the frontend and Render for the backend, with WhiteNoise for static asset serving and CORS configured for cross-origin API access.',
+      'Built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4 on the frontend, powered by a Django 5 and Django REST Framework backend with PostgreSQL. Features SimpleJWT authentication, Recharts financial visualizations, Python Decimal precision for exact currency calculations, Gunicorn WSGI server, and WhiteNoise static serving.',
     techStack: [
-      'Next.js',
+      'Next.js 16',
+      'React 19',
       'TypeScript',
-      'Tailwind CSS',
-      'Recharts',
-      'Lucide React',
-      'Django',
+      'Tailwind CSS v4',
+      'Django 5',
       'Django REST Framework',
       'PostgreSQL',
-      'JWT',
-      'Vercel',
-      'Render',
+      'SimpleJWT',
+      'Recharts',
+      'Python Decimal',
+      'Gunicorn',
+      'WhiteNoise',
     ],
-    liveUrl: 'https://vaulty-navy.vercel.app/',
+    liveUrl: 'https://vesto-orcin.vercel.app/',
     accent: '#2997E8',
+    image: '/images/vesto.png',
   },
   {
-    slug: 'nivo',
+    slug: 'duo',
     number: '02',
-    name: 'NIVO',
-    tagline: 'AI-Powered Study & Learning Platform',
+    name: 'DUO',
+    tagline: 'Private Two-Person Connection Platform',
     description:
-      'A centralized learning platform bringing studying, revision, and productivity into one workspace, with a gamified Brain Roulette experience.',
+      'DUO is a privacy-first digital space built exclusively for two people. It combines real-time communication with shared rituals such as blind daily questions, collaborative drawing, voice notes, little keepsakes, and shared tasks, creating a private alternative to noisy social and messaging platforms.',
     problem:
-      'Students often study using disconnected tools for notes, flashcards, quizzes, revision, and productivity. This makes it difficult to organize learning material and maintain consistent study habits in one place.',
+      'Most communication platforms are built around large networks, group conversations, feeds, and a constant stream of notifications. They make it easy to stay connected with many people, but they are not designed around the needs of a relationship between exactly two people.\n\nMessaging is available, but the experience is spread across conversations, media, notifications, and separate tools. There is no dedicated space where two people can intentionally communicate, collaborate, build small shared rituals, and keep moments that matter to them. The result is a communication experience that focuses on sending messages rather than creating a private space designed specifically for two people.',
     solution:
-      'Nivo is a centralized learning platform designed to bring studying, revision, and productivity into one workspace. Users can organize their study materials, manage tasks and goals, track progress, use focused study sessions, and monitor their learning activity through dashboards and analytics. The platform also incorporates Brain Roulette, a gamified learning experience with trivia, logic puzzles, riddles, pattern recognition, memory challenges, and general knowledge. Users earn XP, maintain streaks, and track high scores, adding an interactive element to the learning experience.',
+      'DUO creates a strict two-person digital environment where two accounts connect through a unique pairing code or QR-based pairing. Once connected, the pair gets a private space built around their shared communication and activities, without the noise of larger social platforms.\n\nThe space brings together real-time chat, read receipts, voice notes, blind-reveal daily questions, collaborative drawing, little notes, keepsakes, notifications, and a shared task board. Each feature supports a different way for the two users to communicate, collaborate, or preserve something they have shared.\n\nBehind the experience, Django acts as the backend authority for identity, pairing, permissions, and relationship-level data isolation. This ensures that the two-person relationship is treated as the core boundary of the platform, rather than simply another chat between users.',
     build:
-      'A Next.js + TypeScript frontend with Recharts analytics and Lucide React iconography, backed by Django REST Framework and PostgreSQL. JWT authentication gates access. The gamification engine runs server-side with XP, streaks, and high-score tracking through Django Admin and REST APIs. Deployed on Vercel and Render.',
+      'Engineered with Next.js 16, React 19, TypeScript, and Tailwind CSS v4. Backend powered by Django 5.1 and Django REST Framework alongside Supabase PostgreSQL, Supabase Auth, Realtime channels, and Storage. Security relies on PyJWT and Cryptography libraries, while interactive features leverage HTML5 Canvas and Framer Motion.',
+    techStack: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS v4',
+      'Django 5.1',
+      'Django REST Framework',
+      'Supabase PostgreSQL',
+      'Supabase Auth',
+      'Supabase Realtime',
+      'Supabase Storage',
+      'PyJWT',
+      'Cryptography',
+      'HTML5 Canvas',
+      'Framer Motion',
+    ],
+    liveUrl: 'https://duo-one-snowy.vercel.app/',
+    accent: '#FF7B42',
+    image: '/images/duo.png',
+  },
+  {
+    slug: 'lifeos',
+    number: '03',
+    name: 'LifeOS',
+    tagline: 'Personal Operating System',
+    description:
+      'LifeOS is an all-in-one personal operating system that connects daily tasks, habits, long-term goals, finances, energy, and productivity in one cohesive dashboard. Its core idea is to connect small daily actions with measurable long-term outcomes instead of treating every productivity metric as an isolated activity.',
+    problem:
+      'People often rely on multiple disconnected tools to manage tasks, habits, finances, goals, journaling, and day-to-day productivity. Each tool handles one part of life, but the information remains separated across different places.\n\nThis creates constant context switching and makes it harder to see how different areas of life affect each other. Completing a task, maintaining a habit, saving money, or making progress toward a goal can each feel like an isolated activity, making it difficult to understand how everyday actions contribute to larger goals and long-term progress.',
+    solution:
+      'LifeOS brings these different areas into one unified personal dashboard, giving users a single place to understand and manage their progress. It combines a dynamic Life Score with task management, habit streaks, financial runway, goal milestones, and analytics.\n\nThe platform also includes a Trajectory Simulator that models how changes in focus, savings, and consistency can compound over time. Instead of viewing individual tasks, habits, finances, and goals separately, LifeOS connects them into a broader view of how everyday decisions can influence long-term outcomes.',
+    build:
+      'Full-stack architecture with Next.js, React 19, TypeScript, and Tailwind CSS v4 on the client, interfacing with a Django 5 & Django REST Framework backend. Data integrity is handled via PostgreSQL, secured with SimpleJWT, with analytical visualizations rendered via Recharts and production delivery served via Gunicorn.',
     techStack: [
       'Next.js',
+      'React 19',
       'TypeScript',
-      'Tailwind CSS',
-      'Recharts',
-      'Lucide React',
-      'Django',
+      'Tailwind CSS v4',
+      'Django 5',
       'Django REST Framework',
       'PostgreSQL',
-      'JWT',
-      'Vercel',
-      'Render',
-    ],
-    liveUrl: 'https://nivo-ai-study.vercel.app/',
-    accent: '#54D68A',
-  },
-  {
-    slug: 'flowport',
-    number: '03',
-    name: 'FLOWPORT',
-    tagline: 'Shared Container Cargo Marketplace',
-    description:
-      'A logistics marketplace concept connecting businesses that need to ship smaller cargo volumes with available container capacity.',
-    problem:
-      'Shipping cargo through containers can be inefficient when businesses do not have enough goods to fill an entire container. At the same time, available container capacity may go unused, leading to higher shipping costs and inefficient logistics planning.',
-    solution:
-      'FlowPort is a logistics marketplace concept designed to connect businesses that need to ship smaller cargo volumes with available container capacity. The platform provides a centralized interface for managing cargo requirements, available capacity, shipment details, and matching opportunities. Users can create and manage cargo requirements, view suitable container opportunities, track shipment information, and organize logistics activity through a structured dashboard. The platform focuses on making shared-container logistics more transparent, organized, and accessible.',
-    build:
-      'A React + TypeScript frontend styled with Tailwind CSS, backed by a Node.js + Express.js API using Prisma ORM over PostgreSQL. JWT authentication secures the marketplace. Recharts visualizes shipment and capacity data. Deployed on Vercel with the backend on cloud infrastructure, exposing REST APIs for the marketplace architecture.',
-    techStack: [
-      'React',
-      'TypeScript',
-      'Tailwind CSS',
-      'Node.js',
-      'Express.js',
-      'PostgreSQL',
-      'Prisma',
-      'JWT',
+      'SimpleJWT',
       'Recharts',
-      'Vercel',
+      'Gunicorn',
     ],
-    liveUrl: 'https://flowport-nine.vercel.app/',
-    accent: '#FF7B42',
+    liveUrl: 'https://life-os-alpha-fawn-27.vercel.app/',
+    accent: '#54D68A',
+    image: '/images/lifeos.png',
   },
   {
-    slug: 'focusflow',
+    slug: 'anim8',
     number: '04',
-    name: 'FOCUSFLOW',
-    tagline: 'Productivity & Pomodoro UI Concept',
+    name: 'Anim8',
+    tagline: 'Browser-Based 2D Animation Studio',
     description:
-      'A UI-focused productivity and Pomodoro application concept designed around simplicity, focus, and distraction-free work.',
+      'Anim8 is a production-grade browser-based 2D frame-by-frame hand-drawn animation studio designed to bring professional animation workflows directly to the web. It provides a dedicated drawing engine, multi-layer timeline, onion skinning, audio synchronization, multi-touch navigation, offline-first storage, cloud synchronization, and multi-format export.',
     problem:
-      'Many productivity tools are overloaded with features and distracting interfaces, making it harder for users to maintain focus and build a consistent work routine.',
+      'Traditional animation software can be expensive, resource-intensive, and limited to desktop workflows. This can make frame-by-frame animation less accessible when users want to work directly in a browser.\n\nBrowser-based art tools introduce a different set of challenges. Canvas lag and touch jitter can make drawing feel imprecise, while unreliable browser storage can put projects at risk. Limited offline support can also interrupt the workflow, and complicated export processes make it harder to move finished work into usable formats.',
     solution:
-      'FocusFlow is a product-focused productivity and Pomodoro application concept designed around simplicity, focus, and distraction-free work. It provides a clean interface for managing tasks, starting focused Pomodoro sessions, tracking session progress, and maintaining a streamlined daily workflow. The project primarily focused on product design, interaction design, visual hierarchy, and responsive interface development, rather than complex backend functionality.',
+      'Anim8 uses a local-first IndexedDB architecture to keep projects, frames, layers, artwork, undo history, and audio stored directly in the browser. This data is then asynchronously synchronized with Neon PostgreSQL, allowing the animation workflow to remain centered around the browser while keeping project data synchronized.\n\nIts custom Canvas engine supports smooth pressure-sensitive drawing and multi-touch zooming, alongside animation features such as onion skinning, timeline editing, audio synchronization, and reference tracing. Anim8 also handles export directly in the browser, supporting WebM, GIF, PNG sequences, spritesheets, and native project backups without requiring a separate export workflow.',
     build:
-      'A React + JavaScript frontend styled with Tailwind CSS, designed end-to-end in Figma first. The build centered on interaction design — a custom Pomodoro timer, task management, and modern UI animations — with a fully responsive layout and interactive components prioritized over backend complexity.',
-    techStack: ['React', 'JavaScript', 'Tailwind CSS', 'Figma', 'Pomodoro Timer', 'Responsive Design'],
-    liveUrl: 'https://focusflowpomo.netlify.app/',
+      'Built with React 18, TypeScript, Vite, and Tailwind CSS with state managed via Zustand. Canvas performance powered by raw HTML5 Canvas 2D and IndexedDB for local persistence. Cloud backend uses Neon PostgreSQL with Drizzle ORM and Vercel Serverless Functions, protected with JWT and bcryptjs. In-browser client export utilizes MediaRecorder API, gifshot, and JSZip.',
+    techStack: [
+      'React 18',
+      'TypeScript',
+      'Vite',
+      'Tailwind CSS',
+      'Zustand',
+      'HTML5 Canvas 2D',
+      'IndexedDB',
+      'Neon PostgreSQL',
+      'Drizzle ORM',
+      'Vercel Serverless Functions',
+      'JWT',
+      'bcryptjs',
+      'MediaRecorder API',
+      'gifshot',
+      'JSZip',
+    ],
+    liveUrl: 'https://anima8.vercel.app/',
     accent: '#F04BC4',
+    image: '/images/anim8.png',
   },
 ];
 
@@ -195,8 +220,15 @@ export const experiences = [
     year: '2025 — PRESENT',
     location: 'HYDERABAD',
     scopeWords: ['WEBSITES', 'DASHBOARDS', 'DIGITAL PRODUCTS', 'BRANDING', 'MARKETING'],
+    bullets: [
+      'Product & System Design: Designed end-to-end digital experiences across web and SaaS products, including the redesign of a B2C analytics platform by optimizing information architecture, navigation, and core user workflows.',
+      'Design Systems: Created scalable UI systems, reusable components, and consistent design patterns to streamline product development.',
+      'Visual & Brand Design: Developed brand identities, marketing collateral, and visual assets across multiple digital initiatives.',
+      'Cross-functional Delivery: Partnered with developers and stakeholders across discovery, ideation, prototyping, and production handoff.',
+      'Product Strategy: Contributed to requirement analysis, feature planning, design reviews, and iterative product improvements.',
+    ],
     description:
-      'Working across websites, dashboards, digital products, branding, and marketing experiences, translating requirements into functional and visually engaging digital products.',
+      'Product & System Design: Designed end-to-end digital experiences across web and SaaS products. Design Systems: Created scalable UI systems and reusable components. Visual & Brand Design: Developed brand identities and visual assets. Cross-functional Delivery: Partnered with developers and stakeholders across discovery to handoff. Product Strategy: Contributed to requirement analysis, feature planning, and design reviews.',
     accent: '#2997E8',
   },
 ];

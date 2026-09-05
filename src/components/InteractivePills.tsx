@@ -16,7 +16,7 @@ const PILLS: PillData[] = [
   {
     id: 'sleep',
     text: '404: Sleep Not Found',
-    color: '#FBCFE8', // Soft pastel lilac / pink
+    color: '#FBCFE8', 
     textColor: '#18181B',
     initialRotate: -5,
     zIndex: 10,
@@ -24,7 +24,7 @@ const PILLS: PillData[] = [
   {
     id: 'ctrl-z',
     text: 'Ctrl + Z Everything',
-    color: '#FB923C', // Vibrant warm orange
+    color: '#FB923C', 
     textColor: '#09090B',
     initialRotate: 8,
     offsetY: -6,
@@ -33,7 +33,7 @@ const PILLS: PillData[] = [
   {
     id: 'meaning',
     text: 'Mess Into Meaning',
-    color: '#BEF264', // Lime mint
+    color: '#BEF264', 
     textColor: '#14532D',
     initialRotate: -4,
     zIndex: 15,
@@ -41,7 +41,7 @@ const PILLS: PillData[] = [
   {
     id: 'git-commit',
     text: 'git commit -m "trust me"',
-    color: '#93C5FD', // Soft sky blue
+    color: '#93C5FD', 
     textColor: '#1E3A8A',
     initialRotate: -6,
     zIndex: 20,
@@ -49,7 +49,7 @@ const PILLS: PillData[] = [
   {
     id: 'who-approved',
     text: 'Who Approved This?',
-    color: '#FDE047', // Warm sunny yellow
+    color: '#FDE047', 
     textColor: '#713F12',
     initialRotate: 6,
     offsetY: -4,
@@ -58,7 +58,7 @@ const PILLS: PillData[] = [
   {
     id: 'dont-inspect',
     text: 'Please dont inspect',
-    color: '#5EEAD4', // Mint / Teal
+    color: '#5EEAD4', 
     textColor: '#134E4A',
     initialRotate: -3,
     zIndex: 12,
@@ -76,12 +76,12 @@ function PhysicsPill({
 }) {
   const pillRef = useRef<HTMLDivElement>(null);
 
-  // Physics motion values
+  
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
   const rawRot = useMotionValue(pill.initialRotate);
 
-  // Spring physics for natural repulsion and return
+  
   const springConfig = { damping: 18, stiffness: 180, mass: 0.6 };
   const springX = useSpring(rawX, springConfig);
   const springY = useSpring(rawY, springConfig);
@@ -105,11 +105,11 @@ function PhysicsPill({
           const dx = centerX - mousePos.current.x;
           const dy = centerY - mousePos.current.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const threshold = 220; // Influence radius for larger pills
+          const threshold = 220; 
 
           if (dist < threshold && dist > 0) {
             const force = Math.pow((threshold - dist) / threshold, 1.3);
-            const repelDistance = 70; // Repulsion strength
+            const repelDistance = 70; 
             const angle = Math.atan2(dy, dx);
 
             const pushX = Math.cos(angle) * force * repelDistance;

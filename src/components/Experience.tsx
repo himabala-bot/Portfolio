@@ -4,31 +4,29 @@ import { experiences } from '@/data/content';
 import BrowserMockup from './BrowserMockup';
 
 export default function Experience() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-  const lineScale = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
-
   return (
     <section
-      ref={ref}
       id="experience"
-      className="relative px-4 py-32 md:px-8"
+      className="relative px-4 py-24 md:px-8 md:py-32"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="mb-20 font-display text-[12vw] font-black leading-[0.85] tracking-[-0.04em] text-ink md:text-[7vw]"
+          className="mb-14 md:mb-20"
         >
-          Experience<span className="font-serif-italic font-normal text-accent-pink">.</span>
-        </motion.h2>
+          <div className="flex items-center gap-3 font-outfit text-xs uppercase tracking-widest text-ink/40 md:text-sm">
+            <span className="font-semibold">[ 03 ]</span>
+            <span>Career Path & Roles</span>
+          </div>
+          <h2 className="mt-2 font-display text-[12vw] font-black leading-[0.85] tracking-[-0.04em] text-ink md:text-[7vw]">
+            Experience<span className="font-serif-italic font-normal text-accent-pink">.</span>
+          </h2>
+        </motion.div>
 
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-8 sm:space-y-10 md:space-y-14">
           {experiences.map((exp, i) => (
             <ExperienceBlock key={exp.number} exp={exp} index={i} />
           ))}
@@ -50,8 +48,8 @@ function ExperienceBlock({
     target: ref,
     offset: ['start end', 'start center'],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [35, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [0, 1, 1]);
 
   const isFreelance = exp.type === 'FREELANCE';
 
@@ -59,59 +57,53 @@ function ExperienceBlock({
     <motion.div
       ref={ref}
       style={{ y, opacity }}
-      className="relative rounded-3xl border border-ink/10 bg-bg p-6 shadow-[0_8px_30px_rgba(5,5,5,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(5,5,5,0.08)] md:p-10 lg:p-12"
+      className="relative rounded-2xl md:rounded-3xl border border-ink/10 bg-bg p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_6px_28px_rgba(5,5,5,0.04)] transition-all duration-500 hover:shadow-[0_18px_45px_rgba(5,5,5,0.07)]"
     >
-      {/* Header: Number, Pill, Company & Role */}
-      <div className="mb-10 flex flex-col justify-between gap-6 border-b border-ink/10 pb-8 sm:flex-row sm:items-start">
-        <div className="flex items-start gap-5 md:gap-7">
-          {/* Large Number */}
-          <span className="select-none font-display text-6xl font-black leading-none text-ink/20 md:text-7xl lg:text-8xl">
+      
+      <div className="mb-7 flex flex-col justify-between gap-5 border-b border-ink/10 pb-6 sm:mb-9 sm:pb-7 sm:flex-row sm:items-start">
+        <div className="flex items-start gap-4 sm:gap-6 md:gap-7">
+          
+          <span className="select-none font-outfit text-5xl font-black leading-none text-ink/20 sm:text-6xl md:text-7xl lg:text-8xl">
             {exp.number}
           </span>
 
-          <div className="flex flex-col gap-2.5">
-            {/* Type Pill (Green for freelance, Blue for full-time) */}
-            <div>
+          <div className="flex flex-col gap-1.5 pt-0.5 sm:pt-1">
+            
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl md:text-4xl lg:text-5xl">
+                {exp.company}
+                {exp.sub && ` ${exp.sub}`}
+              </h3>
+
+              
               {isFreelance ? (
-                <span className="inline-flex items-center rounded-full border border-[#54D68A]/40 bg-[#54D68A]/20 px-4 py-1.5 font-mono text-sm font-bold uppercase tracking-wider text-[#0e441c] shadow-sm md:text-base">
+                <span className="inline-flex items-center rounded-full border border-[#54D68A]/40 bg-[#54D68A]/20 px-3 py-1 font-outfit text-xs font-bold uppercase tracking-wider text-[#0e441c] shadow-sm sm:px-3.5 sm:py-1.5 sm:text-xs md:text-sm">
                   {exp.type}
                 </span>
               ) : (
-                <span className="inline-flex items-center rounded-full border border-accent-blue/35 bg-accent-blue/15 px-4 py-1.5 font-mono text-sm font-bold uppercase tracking-wider text-accent-blue shadow-sm md:text-base">
+                <span className="inline-flex items-center rounded-full border border-accent-blue/35 bg-accent-blue/15 px-3 py-1 font-outfit text-xs font-bold uppercase tracking-wider text-accent-blue shadow-sm sm:px-3.5 sm:py-1.5 sm:text-xs md:text-sm">
                   {exp.type}
                 </span>
               )}
             </div>
 
-            {/* Company heading matching size of 01 */}
-            <div className="flex flex-wrap items-baseline gap-3">
-              <h3 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
-                {exp.company}
-              </h3>
-              {exp.sub && (
-                <span className="font-serif-italic text-2xl text-ink/50 md:text-3xl lg:text-4xl">
-                  {exp.sub}
-                </span>
-              )}
-            </div>
-
-            {/* Role */}
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-ink/60 md:text-base">
+            
+            <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-ink/60 sm:text-sm md:text-base">
               {exp.role}
             </p>
           </div>
         </div>
 
-        {/* Right metadata: Year & Location */}
-        <div className="flex items-center gap-3 sm:flex-col sm:items-end">
+        
+        <div className="flex items-center gap-2.5 sm:flex-col sm:items-end">
           <span
-            className="font-display text-base font-bold uppercase tracking-[0.15em] md:text-xl"
+            className="font-display text-sm font-bold uppercase tracking-[0.15em] sm:text-base md:text-xl"
             style={{ color: exp.accent }}
           >
             {exp.year}
           </span>
           {exp.location && (
-            <span className="font-display text-xs uppercase tracking-[0.2em] text-ink/40">
+            <span className="font-display text-xs uppercase tracking-[0.2em] text-ink/40 sm:text-xs">
               {exp.location}
             </span>
           )}
@@ -119,40 +111,42 @@ function ExperienceBlock({
       </div>
 
       {isFreelance ? (
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-          {/* Browser mockup & Prominent CTA */}
-          <div className="flex flex-col justify-between gap-6">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-14 items-center">
+          
+          <div className="lg:col-span-5 flex flex-col justify-between gap-6">
             <BrowserMockup
               url="authentic-ayurveda.vercel.app"
               accent={exp.accent}
+              imageSrc="/images/authentic-ayurveda.png"
+              aspectClassName="aspect-[16/9]"
             />
             <div>
               <a
                 href={exp.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-ink px-7 py-3.5 font-display text-sm font-semibold uppercase tracking-wider text-bg shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[#54D68A] hover:text-[#0a3314] hover:shadow-xl md:text-base"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-wider text-bg shadow-md transition-all duration-300 hover:bg-[#54D68A] hover:text-[#0a3314] hover:shadow-lg md:text-base"
               >
                 <span>View Live Site</span>
-                <span className="text-lg transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
+                <span className="text-base transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
                   ↗
                 </span>
               </a>
             </div>
           </div>
 
-          {/* Details: Tech Stack, Implementation & Description with enlarged font sizes */}
-          <div className="flex flex-col justify-center space-y-8">
-            {/* Tech Stack */}
+          
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-7">
+            
             <div>
-              <h4 className="mb-3.5 font-display text-xs font-bold uppercase tracking-[0.25em] text-ink/50 md:text-sm">
+              <h4 className="mb-3 font-display text-xs font-bold uppercase tracking-[0.25em] text-ink/50 md:text-sm">
                 Tech Stack
               </h4>
               <div className="flex flex-wrap gap-2.5">
                 {exp.scope?.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-ink/15 bg-ink/[0.04] px-4 py-2 font-display text-xs font-semibold text-ink transition-colors hover:border-ink/30 md:text-sm"
+                    className="rounded-full border border-ink/15 bg-ink/[0.04] px-3.5 py-1.5 font-outfit text-xs sm:text-sm font-semibold text-ink transition-colors hover:border-ink/30"
                   >
                     {t}
                   </span>
@@ -160,16 +154,16 @@ function ExperienceBlock({
               </div>
             </div>
 
-            {/* Implementation */}
+            
             <div>
-              <h4 className="mb-3.5 font-display text-xs font-bold uppercase tracking-[0.25em] text-ink/50 md:text-sm">
+              <h4 className="mb-2 font-display text-xs font-bold uppercase tracking-[0.25em] text-ink/50 md:text-sm">
                 Implementation
               </h4>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2">
                 {exp.implementation?.map((t, idx) => (
                   <span
                     key={t}
-                    className="font-display text-sm font-medium text-ink/80 md:text-base"
+                    className="font-display text-sm font-medium text-ink/80 sm:text-base"
                   >
                     {t}
                     {idx < (exp.implementation?.length || 0) - 1 && (
@@ -180,37 +174,69 @@ function ExperienceBlock({
               </div>
             </div>
 
-            {/* Description */}
+            
             <div>
-              <p className="font-display text-base font-normal leading-[1.75] text-ink/80 md:text-lg lg:text-[19px]">
+              <p className="font-display text-base font-normal leading-[1.75] text-ink/80 sm:text-lg">
                 {exp.description}
               </p>
             </div>
           </div>
         </div>
       ) : (
-        <div className="space-y-8">
-          {/* Scope through typography */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <div className="space-y-7">
+          
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5">
             {exp.scopeWords?.map((w, j) => (
-              <motion.span
+              <span
                 key={w}
-                className="font-display text-[4.5vw] font-black uppercase leading-none tracking-[-0.02em] text-ink/85 md:text-[3vw] lg:text-[2.6vw]"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: j * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                viewport={{ once: true }}
+                className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] font-black uppercase leading-tight tracking-[-0.02em] text-ink/85"
                 style={{ color: j % 2 === 0 ? exp.accent : undefined }}
               >
                 {w}
-              </motion.span>
+              </span>
             ))}
           </div>
 
-          <div className="max-w-3xl pt-2">
-            <p className="font-display text-base font-normal leading-[1.75] text-ink/80 md:text-lg lg:text-[19px]">
-              {exp.description}{' '}
-              <span className="font-serif-italic text-2xl font-normal text-accent-pink md:text-3xl">
+          <div className="max-w-4xl space-y-6 pt-1">
+            {exp.bullets && exp.bullets.length > 0 ? (
+              <ul className="space-y-3.5 sm:space-y-4">
+                {exp.bullets.map((b, idx) => {
+                  const colonIndex = b.indexOf(': ');
+                  const hasLabel = colonIndex !== -1;
+                  const label = hasLabel ? b.slice(0, colonIndex + 1) : '';
+                  const body = hasLabel ? b.slice(colonIndex + 2) : b;
+
+                  return (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-3.5 font-display text-base font-normal leading-[1.7] text-ink/85 sm:text-lg lg:text-[18.5px]"
+                    >
+                      <span
+                        className="mt-2.5 h-2 w-2 shrink-0 rounded-full"
+                        style={{ backgroundColor: exp.accent }}
+                      />
+                      <span>
+                        {hasLabel ? (
+                          <>
+                            <strong className="font-bold text-ink">{label}</strong>{' '}
+                            {body}
+                          </>
+                        ) : (
+                          b
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="font-display text-base font-normal leading-[1.75] text-ink/80 sm:text-lg lg:text-[19px]">
+                {exp.description}
+              </p>
+            )}
+
+            <p className="pt-3 sm:pt-4">
+              <span className="font-serif-italic text-2xl font-normal text-accent-pink sm:text-3xl md:text-4xl">
                 basically a creative experience designer.
               </span>
             </p>

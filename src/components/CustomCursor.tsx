@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 
 type CursorState = 'default' | 'hover' | 'peek';
 
 export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { damping: 28, stiffness: 350, mass: 0.5 });
-  const springY = useSpring(cursorY, { damping: 28, stiffness: 350, mass: 0.5 });
+  const lastMousePos = useRef({ x: -100, y: -100 });
 
   const [state, setState] = useState<CursorState>('default');
   const [visible, setVisible] = useState(false);
@@ -21,14 +20,12 @@ export default function CustomCursor() {
     enabledRef.current = true;
     document.body.classList.add('has-custom-cursor');
 
-    const onMove = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-      if (!visible) setVisible(true);
-
-      const target = e.target as HTMLElement | null;
+    const checkElementAtCursor = (x: number, y: number) => {
+      if (x < 0 || y < 0 || x > window.innerWidth || y > window.innerHeight) {
+        return;
+      }
+      const target = document.elementFromPoint(x, y) as HTMLElement | null;
       if (target) {
-        // Detect dark section / background
         const darkSection = target.closest('#stack, #contact, footer, .bg-ink, [data-theme="dark"]');
         setIsDark(Boolean(darkSection));
 
@@ -47,14 +44,37 @@ export default function CustomCursor() {
       }
     };
 
-    const onLeave = () => setVisible(false);
+    const onMove = (e: MouseEvent) => {
+      lastMousePos.current = { x: e.clientX, y: e.clientY };
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+      if (!visible) setVisible(true);
+      checkElementAtCursor(e.clientX, e.clientY);
+    };
+
+    const onScrollOrWheel = () => {
+      const { x, y } = lastMousePos.current;
+      checkElementAtCursor(x, y);
+    };
+
+    const onLeave = () => {
+      lastMousePos.current = { x: -100, y: -100 };
+      setVisible(false);
+    };
     const onEnter = () => setVisible(true);
 
-    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mousemove', onMove, { passive: true });
+    window.addEventListener('scroll', onScrollOrWheel, { passive: true });
+    window.addEventListener('wheel', onScrollOrWheel, { passive: true });
+    window.addEventListener('resize', onScrollOrWheel, { passive: true });
     document.addEventListener('mouseleave', onLeave);
     document.addEventListener('mouseenter', onEnter);
+
     return () => {
       window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('scroll', onScrollOrWheel);
+      window.removeEventListener('wheel', onScrollOrWheel);
+      window.removeEventListener('resize', onScrollOrWheel);
       document.removeEventListener('mouseleave', onLeave);
       document.removeEventListener('mouseenter', onEnter);
       document.body.classList.remove('has-custom-cursor');
@@ -94,7 +114,7 @@ export default function CustomCursor() {
   return (
     <motion.div
       className="pointer-events-none fixed left-0 top-0 z-[9999] flex items-center justify-center select-none"
-      style={{ x: springX, y: springY }}
+      style={{ x: cursorX, y: cursorY }}
       aria-hidden="true"
     >
       <motion.div
@@ -115,7 +135,7 @@ export default function CustomCursor() {
       >
         {state === 'peek' && (
           <span
-            className="font-display text-[10px] font-bold uppercase tracking-[0.15em]"
+            className="font-outfit text-[10px] font-bold uppercase tracking-[0.15em]"
             style={{ color: textColor }}
           >
             {label} ↗
