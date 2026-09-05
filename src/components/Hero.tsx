@@ -45,11 +45,11 @@ export default function Hero() {
     <motion.section
       ref={ref}
       style={{ y, scale, opacity }}
-      className="grain relative flex min-h-[92svh] md:min-h-screen w-full flex-col justify-between overflow-hidden bg-bg px-4 pt-20 pb-8 sm:px-8 sm:pt-26 sm:pb-10 md:px-12 md:pt-30 md:pb-12 lg:px-16 lg:pt-34 lg:pb-14 xl:px-20"
+      className="grain relative flex min-h-[90svh] md:min-h-screen w-full flex-col justify-center md:justify-between overflow-hidden bg-bg px-4 pt-24 pb-10 sm:px-8 sm:pt-28 sm:pb-12 md:px-12 md:pt-30 md:pb-12 lg:px-16 lg:pt-34 lg:pb-14 xl:px-20"
     >
-      <div className="mx-auto flex h-full w-full max-w-7xl flex-1 flex-col justify-between">
+      <div className="mx-auto flex h-full w-full max-w-7xl flex-1 flex-col justify-center md:justify-between gap-10 sm:gap-14 md:gap-0">
         
-        <div className="my-auto flex flex-col items-start w-full py-4 sm:py-6 md:py-8 text-left">
+        <div className="my-0 md:my-auto flex flex-col items-start w-full py-2 sm:py-4 md:py-8 text-left">
           
           <div className="flex w-full flex-nowrap items-baseline justify-between select-none overflow-visible leading-[0.76]">
             {letters.map((l, i) => (
@@ -67,7 +67,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-3 sm:mt-5 flex items-center gap-1.5 sm:gap-3.5 pl-1.5 sm:pl-2.5 md:pl-3.5 lg:pl-4 font-display text-[2.8vw] sm:text-[2.1vw] md:text-[1.4vw] lg:text-[1.18rem] xl:text-[1.32rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.14em] text-ink/85"
+            className="mt-3 sm:mt-5 flex items-center gap-1.5 sm:gap-3.5 pl-0.5 sm:pl-2 md:pl-3.5 lg:pl-4 font-display text-[10px] sm:text-xs md:text-sm lg:text-[1.18rem] xl:text-[1.32rem] font-bold uppercase tracking-[0.1em] sm:tracking-[0.14em] text-ink/85"
           >
             <span className="whitespace-nowrap">Product Designer</span>
             <span className="text-accent-pink font-normal mx-0.5 sm:mx-1">×</span>
@@ -76,18 +76,18 @@ export default function Hero() {
         </div>
 
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center pt-6 sm:pt-8 md:pt-10 w-full">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-start md:items-center pt-2 sm:pt-6 md:pt-10 w-full">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="md:col-span-7 lg:col-span-8 flex flex-col items-start text-left font-display pl-1.5 sm:pl-2.5 md:pl-3.5 lg:pl-4"
+            className="md:col-span-7 lg:col-span-8 flex flex-col items-start text-left font-display pl-0.5 sm:pl-2 md:pl-3.5 lg:pl-4"
           >
-            <p className="font-medium text-[6vw] text-ink sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[2.9rem] leading-[1.12] tracking-[-0.02em] lowercase">
+            <p className="font-medium text-[6.2vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[2.9rem] leading-[1.16] md:leading-[1.12] tracking-[-0.02em] lowercase text-ink">
               from pixels to products
             </p>
-            <p className="font-medium text-[6vw] text-ink sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[2.9rem] leading-[1.12] tracking-[-0.02em] lowercase">
+            <p className="font-medium text-[6.2vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[2.9rem] leading-[1.16] md:leading-[1.12] tracking-[-0.02em] lowercase text-ink">
               with an{' '}
               <span className="font-serif-italic font-normal text-accent-pink text-[1.24em] tracking-normal px-0.5 inline-block">
                 eye
@@ -101,13 +101,13 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-5 lg:col-span-4 flex items-center justify-start md:justify-end"
+            className="md:col-span-5 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-1 md:mt-0"
           >
             <MouseFollowingEyes
               blinkInterval={6000}
               eyelidClassName="bg-accent-pink"
-              eyeClassName="w-11 h-16 sm:w-13 sm:h-20 md:w-[3.8rem] md:h-[5.8rem] lg:w-[4.4rem] lg:h-[6.6rem] xl:w-[4.9rem] xl:h-[7.4rem] shadow-[0_12px_28px_-6px_rgba(5,5,5,0.12)] border border-ink/5"
-              pupilClassName="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7"
+              eyeClassName="w-12 h-18 sm:w-14 sm:h-20 md:w-[3.8rem] md:h-[5.8rem] lg:w-[4.4rem] lg:h-[6.6rem] xl:w-[4.9rem] xl:h-[7.4rem] shadow-[0_12px_28px_-6px_rgba(5,5,5,0.12)] border border-ink/5"
+              pupilClassName="h-4.5 w-4.5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7"
             />
           </motion.div>
         </div>
