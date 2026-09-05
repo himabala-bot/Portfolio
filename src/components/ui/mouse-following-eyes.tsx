@@ -203,9 +203,13 @@ const Eye: React.FC<EyeProps> = ({
   return (
     <div
       ref={selfRef}
-      className={`relative bg-[#f8f8f8] border-2 border-ink rounded-[50%/50%] flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.12)] overflow-hidden transition-all duration-300 ${
+      className={`relative bg-white border-2 border-ink rounded-[50%/50%] flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.12)] overflow-hidden transition-all duration-300 ${
         eyeClassName || 'w-14 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28'
       }`}
+      style={{
+        minWidth: '3.5rem',
+        minHeight: '5rem',
+      }}
     >
       
       <div
