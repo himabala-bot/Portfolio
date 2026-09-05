@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import {
   motion,
   useScroll,
@@ -13,16 +13,6 @@ const letters = ['H', 'I', 'M', 'A', 'B', 'A', 'L', 'A'];
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const mousePos = useRef({ x: -1000, y: -1000, active: false });
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -54,7 +44,7 @@ export default function Hero() {
   return (
     <motion.section
       ref={ref}
-      style={{ y: isMobile ? 0 : y, scale: isMobile ? 1 : scale, opacity: isMobile ? 1 : opacity }}
+      style={{ y, scale, opacity }}
       className="grain relative flex min-h-0 md:min-h-screen w-full flex-col justify-start md:justify-between overflow-hidden bg-bg px-4 pt-20 pb-8 sm:px-8 sm:pt-24 sm:pb-12 md:px-12 md:pt-30 md:pb-12 lg:px-16 lg:pt-34 lg:pb-14 xl:px-20"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-start md:justify-between gap-6 sm:gap-10 md:gap-0">
@@ -68,16 +58,15 @@ export default function Hero() {
                 letter={l}
                 index={i}
                 mousePos={mousePos}
-                isMobile={isMobile}
               />
             ))}
           </div>
 
           
           <motion.div
-            initial={isMobile ? false : { opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={isMobile ? { duration: 0 } : { duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
             className="mt-3 sm:mt-5 flex items-center gap-1.5 sm:gap-3.5 pl-0.5 sm:pl-2 md:pl-3.5 lg:pl-4 font-display text-[10px] sm:text-xs md:text-sm lg:text-[1.18rem] xl:text-[1.32rem] font-bold uppercase tracking-[0.1em] sm:tracking-[0.14em] text-ink/85"
           >
             <span className="whitespace-nowrap">Product Designer</span>
@@ -90,9 +79,9 @@ export default function Hero() {
         <div className="flex flex-col md:grid md:grid-cols-12 gap-4 sm:gap-8 lg:gap-12 items-start md:items-center pt-1 sm:pt-6 md:pt-10 w-full">
           
           <motion.div
-            initial={isMobile ? false : { opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={isMobile ? { duration: 0 } : { duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
             className="md:col-span-7 lg:col-span-8 flex flex-col items-start text-left font-display pl-0.5 sm:pl-2 md:pl-3.5 lg:pl-4"
           >
             <p className="font-medium text-[6.2vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[2.9rem] leading-[1.16] md:leading-[1.12] tracking-[-0.02em] lowercase text-ink">
@@ -109,16 +98,16 @@ export default function Hero() {
 
           
           <motion.div
-            initial={isMobile ? false : { opacity: 0, scale: 0.9, y: 15 }}
+            initial={{ opacity: 0, scale: 0.9, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={isMobile ? { duration: 0 } : { duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-5 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-1 md:mt-0"
           >
             <MouseFollowingEyes
               blinkInterval={6000}
               eyelidClassName="bg-accent-pink"
-              eyeClassName="w-14 h-20 sm:w-16 sm:h-24 md:w-[3.8rem] md:h-[5.8rem] lg:w-[4.4rem] lg:h-[6.6rem] xl:w-[4.9rem] xl:h-[7.4rem]"
-              pupilClassName="h-5 w-5 sm:h-6 sm:w-6 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7"
+              eyeClassName="w-11 h-16 sm:w-13 sm:h-20 md:w-[3.8rem] md:h-[5.8rem] lg:w-[4.4rem] lg:h-[6.6rem] xl:w-[4.9rem] xl:h-[7.4rem] shadow-[0_12px_28px_-6px_rgba(5,5,5,0.12)] border border-ink/5"
+              pupilClassName="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7"
             />
           </motion.div>
         </div>
@@ -131,12 +120,10 @@ function LetterItem({
   letter,
   index,
   mousePos,
-  isMobile,
 }: {
   letter: string;
   index: number;
   mousePos: React.MutableRefObject<{ x: number; y: number; active: boolean }>;
-  isMobile: boolean;
 }) {
   const letterRef = useRef<HTMLSpanElement>(null);
   const rawX = useMotionValue(0);
@@ -203,17 +190,13 @@ function LetterItem({
       <motion.span
         ref={letterRef}
         className="inline-block font-display text-[12.6vw] sm:text-[13.5vw] md:text-[13.5vw] lg:text-[13vw] xl:text-[13.5vw] font-black leading-[0.76] tracking-[-0.05em] text-ink select-none cursor-default"
-        initial={isMobile ? false : { y: '110%', opacity: 0 }}
+        initial={{ y: '110%', opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={
-          isMobile
-            ? { duration: 0 }
-            : {
-                delay: 0.15 + index * 0.04,
-                duration: 0.9,
-                ease: [0.16, 1, 0.3, 1],
-              }
-        }
+        transition={{
+          delay: 0.15 + index * 0.04,
+          duration: 0.9,
+          ease: [0.16, 1, 0.3, 1],
+        }}
         style={{
           x: springX,
           y: springY,
