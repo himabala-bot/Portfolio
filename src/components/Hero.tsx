@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import {
   motion,
+  AnimatePresence,
   useScroll,
   useTransform,
   useMotionValue,
@@ -136,6 +137,53 @@ export default function Hero() {
                 alt="Hima Bala Illustration"
                 className="h-40 sm:h-52 md:h-64 lg:h-76 xl:h-84 w-auto object-contain pointer-events-auto block"
               />
+
+              {/* Small & subtle "this is me" callout with arrow on hover */}
+              <AnimatePresence>
+                {isAvatarHovered && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.85, y: 4 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.85, y: 4 }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute top-4 sm:top-6 left-[96%] sm:left-[93%] ml-2 md:left-auto md:ml-0 md:-left-24 lg:-left-28 flex items-center gap-1 sm:gap-1.5 pointer-events-none z-50 select-none whitespace-nowrap"
+                  >
+                    {/* Desktop: subtle text on left, arrow pointing right to avatar */}
+                    <span className="hidden md:inline font-serif-italic font-normal text-xs lg:text-[13px] text-ink/70 lowercase tracking-normal bg-bg/85 backdrop-blur-[2px] px-1 py-0.5 rounded">
+                      this is me
+                    </span>
+                    <svg
+                      className="hidden md:block w-4 h-4 text-accent-pink/90 shrink-0 -rotate-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M4 14c4-1 8-3 13-7" />
+                      <path d="M12 6h5v5" />
+                    </svg>
+
+                    {/* Mobile: arrow pointing left to avatar, subtle text on right */}
+                    <svg
+                      className="md:hidden w-4 h-4 text-accent-pink/90 shrink-0 rotate-180"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M4 14c4-1 8-3 13-7" />
+                      <path d="M12 6h5v5" />
+                    </svg>
+                    <span className="md:hidden font-serif-italic font-normal text-xs text-ink/70 lowercase tracking-normal bg-bg/85 backdrop-blur-[2px] px-1 py-0.5 rounded">
+                      this is me
+                    </span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         </div>
