@@ -69,15 +69,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
-        <div className="mt-8 flex flex-col items-center justify-between gap-2 text-center md:flex-row md:text-left">
-          <p className="font-display text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-bg/30">
-            © 2026 Hima Bala. From Pixels to Products.
-          </p>
-          <p className="font-display text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-bg/30">
-            Designed & Built with intention.
-          </p>
-        </div>
       </div>
     </footer>
   );
