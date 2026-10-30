@@ -108,18 +108,18 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Avatar Image in the same size where the eyes were */}
+          {/* Transparent Avatar Illustration */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-4 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-1 md:mt-0"
+            className="md:col-span-4 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-3 md:mt-0"
           >
-            <div className="group relative shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 shadow-[0_12px_28px_-6px_rgba(5,5,5,0.14)] bg-[#050505] transition-transform duration-300 hover:scale-105 select-none">
+            <div className="relative shrink-0 select-none group">
               <img
-                src="/images/avatar.jpg"
-                alt="Hima Bala"
-                className="h-16 sm:h-20 md:h-[5.8rem] lg:h-[6.6rem] xl:h-[7.4rem] w-auto aspect-[1024/882] object-cover block"
+                src="/images/avatar.png"
+                alt="Hima Bala Illustration"
+                className="h-28 sm:h-36 md:h-44 lg:h-52 xl:h-60 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-rotate-2 drop-shadow-[0_10px_22px_rgba(0,0,0,0.07)] pointer-events-auto"
               />
             </div>
           </motion.div>
