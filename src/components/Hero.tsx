@@ -76,39 +76,52 @@ export default function Hero() {
         </div>
 
         
-        <div className="flex flex-col md:grid md:grid-cols-12 gap-4 sm:gap-8 lg:gap-12 items-start md:items-center pt-1 sm:pt-6 md:pt-10 w-full">
-          
+        {/* 2. ASYMMETRICAL EDITORIAL STATEMENT WITH EYES ON LEFT & AVATAR ON RIGHT */}
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-start md:items-center pt-1 sm:pt-6 md:pt-10 w-full">
+          {/* Main Statement with Interactive Eyes to its left */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="md:col-span-7 lg:col-span-8 flex flex-col items-start text-left font-display pl-0.5 sm:pl-2 md:pl-3.5 lg:pl-4"
+            className="md:col-span-8 lg:col-span-8 flex flex-row items-center gap-3.5 sm:gap-5 md:gap-6 text-left font-display pl-0.5 sm:pl-2 md:pl-3.5 lg:pl-4"
           >
-            <p className="font-medium text-[6.2vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[2.9rem] leading-[1.16] md:leading-[1.12] tracking-[-0.02em] lowercase text-ink">
-              from pixels to products
-            </p>
-            <p className="font-medium text-[6.2vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[2.9rem] leading-[1.16] md:leading-[1.12] tracking-[-0.02em] lowercase text-ink">
-              with an{' '}
-              <span className="font-serif-italic font-normal text-accent-pink text-[1.24em] tracking-normal px-0.5 inline-block">
-                eye
-              </span>{' '}
-              for detail.
-            </p>
+            <div className="shrink-0">
+              <MouseFollowingEyes
+                blinkInterval={6000}
+                eyelidClassName="bg-accent-pink"
+                eyeClassName="w-8 h-12 sm:w-10 sm:h-15 md:w-[3.2rem] md:h-[4.8rem] lg:w-[3.6rem] lg:h-[5.4rem] xl:w-[4rem] xl:h-[6rem] shadow-[0_12px_28px_-6px_rgba(5,5,5,0.12)] border border-ink/5"
+                pupilClassName="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-6 xl:w-6"
+              />
+            </div>
+
+            <div className="flex flex-col items-start">
+              <p className="font-medium text-[5vw] sm:text-[3.8vw] md:text-[2.8vw] lg:text-[2.2rem] xl:text-[2.5rem] leading-[1.16] md:leading-[1.12] tracking-[-0.02em] lowercase text-ink">
+                from pixels to products
+              </p>
+              <p className="font-medium text-[5vw] sm:text-[3.8vw] md:text-[2.8vw] lg:text-[2.2rem] xl:text-[2.5rem] leading-[1.16] md:leading-[1.12] tracking-[-0.02em] lowercase text-ink">
+                with an{' '}
+                <span className="font-serif-italic font-normal text-accent-pink text-[1.24em] tracking-normal px-0.5 inline-block">
+                  eye
+                </span>{' '}
+                for detail.
+              </p>
+            </div>
           </motion.div>
 
-          
+          {/* Avatar Image in the same size where the eyes were */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-5 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-1 md:mt-0"
+            className="md:col-span-4 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-1 md:mt-0"
           >
-            <MouseFollowingEyes
-              blinkInterval={6000}
-              eyelidClassName="bg-accent-pink"
-              eyeClassName="w-11 h-16 sm:w-13 sm:h-20 md:w-[3.8rem] md:h-[5.8rem] lg:w-[4.4rem] lg:h-[6.6rem] xl:w-[4.9rem] xl:h-[7.4rem] shadow-[0_12px_28px_-6px_rgba(5,5,5,0.12)] border border-ink/5"
-              pupilClassName="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7"
-            />
+            <div className="group relative shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-ink/10 shadow-[0_12px_28px_-6px_rgba(5,5,5,0.14)] bg-[#050505] transition-transform duration-300 hover:scale-105 select-none">
+              <img
+                src="/images/avatar.jpg"
+                alt="Hima Bala"
+                className="h-16 sm:h-20 md:h-[5.8rem] lg:h-[6.6rem] xl:h-[7.4rem] w-auto aspect-[1024/882] object-cover block"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
