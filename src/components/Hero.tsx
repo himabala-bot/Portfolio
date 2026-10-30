@@ -115,7 +115,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Transparent Avatar Illustration with Overlap & Dynamic Scale on Hover */}
+          {/* Transparent Avatar Illustration with In-Place Expansion on Hover */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -125,16 +125,16 @@ export default function Hero() {
             <div
               onMouseEnter={() => setIsAvatarHovered(true)}
               onMouseLeave={() => setIsAvatarHovered(false)}
-              className={`relative shrink-0 select-none cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`relative shrink-0 select-none cursor-pointer origin-bottom md:origin-bottom-right transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isAvatarHovered
-                  ? 'scale-115 -translate-x-3 -translate-y-8 sm:-translate-x-6 sm:-translate-y-12 md:-translate-x-8 md:-translate-y-16 lg:-translate-x-12 lg:-translate-y-20 -rotate-2 drop-shadow-[0_22px_38px_rgba(0,0,0,0.13)]'
-                  : 'scale-100 translate-x-0 translate-y-0 rotate-0 drop-shadow-[0_10px_22px_rgba(0,0,0,0.06)]'
+                  ? 'scale-125 sm:scale-130 md:scale-135 drop-shadow-[0_22px_38px_rgba(0,0,0,0.14)]'
+                  : 'scale-100 drop-shadow-[0_10px_22px_rgba(0,0,0,0.06)]'
               }`}
             >
               <img
                 src="/images/avatar.png"
                 alt="Hima Bala Illustration"
-                className="h-36 sm:h-48 md:h-56 lg:h-64 xl:h-72 w-auto object-contain pointer-events-auto block"
+                className="h-40 sm:h-52 md:h-64 lg:h-76 xl:h-84 w-auto object-contain pointer-events-auto block"
               />
             </div>
           </motion.div>
