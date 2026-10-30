@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import {
   motion,
   useScroll,
@@ -13,6 +13,7 @@ const letters = ['H', 'I', 'M', 'A', 'B', 'A', 'L', 'A'];
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const mousePos = useRef({ x: -1000, y: -1000, active: false });
+  const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -51,7 +52,13 @@ export default function Hero() {
         
         <div className="my-0 md:my-auto flex flex-col items-start w-full pt-1 pb-1 sm:py-4 md:py-8 text-left">
           
-          <div className="flex w-full flex-nowrap items-baseline justify-between select-none overflow-visible leading-[0.76]">
+          <motion.div
+            animate={{
+              scale: isAvatarHovered ? 0.94 : 1,
+            }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex w-full flex-nowrap items-baseline justify-between select-none overflow-visible leading-[0.76] origin-left"
+          >
             {letters.map((l, i) => (
               <LetterItem
                 key={i}
@@ -60,7 +67,7 @@ export default function Hero() {
                 mousePos={mousePos}
               />
             ))}
-          </div>
+          </motion.div>
 
           
           <motion.div
@@ -108,18 +115,26 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Transparent Avatar Illustration */}
+          {/* Transparent Avatar Illustration with Overlap & Dynamic Scale on Hover */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-4 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-3 md:mt-0"
+            className="md:col-span-4 lg:col-span-4 flex items-center justify-start md:justify-end pl-0.5 sm:pl-2 md:pl-0 mt-3 md:mt-0 relative z-30"
           >
-            <div className="relative shrink-0 select-none group">
+            <div
+              onMouseEnter={() => setIsAvatarHovered(true)}
+              onMouseLeave={() => setIsAvatarHovered(false)}
+              className={`relative shrink-0 select-none cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                isAvatarHovered
+                  ? 'scale-115 -translate-x-3 -translate-y-8 sm:-translate-x-6 sm:-translate-y-12 md:-translate-x-8 md:-translate-y-16 lg:-translate-x-12 lg:-translate-y-20 -rotate-2 drop-shadow-[0_22px_38px_rgba(0,0,0,0.13)]'
+                  : 'scale-100 translate-x-0 translate-y-0 rotate-0 drop-shadow-[0_10px_22px_rgba(0,0,0,0.06)]'
+              }`}
+            >
               <img
                 src="/images/avatar.png"
                 alt="Hima Bala Illustration"
-                className="h-28 sm:h-36 md:h-44 lg:h-52 xl:h-60 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-rotate-2 drop-shadow-[0_10px_22px_rgba(0,0,0,0.07)] pointer-events-auto"
+                className="h-36 sm:h-48 md:h-56 lg:h-64 xl:h-72 w-auto object-contain pointer-events-auto block"
               />
             </div>
           </motion.div>
