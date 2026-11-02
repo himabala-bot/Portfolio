@@ -296,20 +296,22 @@ export default function MyStack() {
             <span className="font-semibold">[ 02 ]</span>
             <span>Skills, Tools &amp; Technologies</span>
           </div>
-          <h2 className="mt-2 font-display text-[12vw] font-black leading-[0.85] tracking-[-0.04em] text-bg md:text-[7vw]">
-            My Stack<span className="font-serif-italic font-normal text-accent-green">.</span>
-          </h2>
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="mt-2 font-display text-[12vw] font-black leading-[0.85] tracking-[-0.04em] text-bg md:text-[7vw]">
+              My Stack<span className="font-serif-italic font-normal text-accent-green">.</span>
+            </h2>
 
-          {/* Hover / tap hint */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="mt-3 font-outfit text-xs text-bg/35 tracking-widest uppercase"
-          >
-            {isDesktop ? '— hover over a folder to explore' : '— tap a folder to expand'}
-          </motion.p>
+            {/* Hover / tap hint — italic serif, right-aligned to heading baseline */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mb-1 font-serif-italic font-normal text-base sm:text-lg text-bg/45 shrink-0"
+            >
+              {isDesktop ? '— hover over a folder to explore' : '— tap a folder to expand'}
+            </motion.p>
+          </div>
         </motion.div>
 
         {/* ── Desktop: 3+2 spread layout ── */}
