@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import ScrollReveal from './ScrollReveal';
 
 export default function About() {
   return (
@@ -24,19 +23,10 @@ export default function About() {
           </h2>
         </motion.div>
 
-        <div className="mx-auto w-full max-w-5xl py-4 sm:py-6">
-          <ScrollReveal
-            baseOpacity={0.12}
-            enableBlur={true}
-            baseRotation={0}
-            blurStrength={8}
-            containerClassName="w-full"
-            textClassName="font-display text-[1.35rem] sm:text-[1.8rem] md:text-[2.2rem] lg:text-[2.6rem] font-semibold leading-[1.65] md:leading-[1.55] tracking-[-0.02em] text-ink"
-            rotationEnd="bottom 80%"
-            wordAnimationEnd="bottom 70%"
-          >
+        <div className="mx-auto w-full max-w-5xl py-2 sm:py-4">
+          <p className="font-display text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-[1.75] md:leading-[1.7] tracking-[-0.01em] text-ink/90">
             A Computer Science Engineer currently working as a Product Designer, with skills across full-stack development and design . I enjoy combining technology and creativity to build digital products that are both useful and thoughtfully crafted.
-          </ScrollReveal>
+          </p>
         </div>
       </div>
     </section>
